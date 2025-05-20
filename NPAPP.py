@@ -11,21 +11,6 @@ import joblib
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Version compatibility handling
-def patch_numpy_version():
-    try:
-        import numba
-        current_numpy_version = packaging.version.parse(np.__version__)
-        if current_numpy_version > packaging.version.parse('2.0'):
-            import numba.__init__
-            def _ensure_critical_deps():
-                pass
-            numba.__init__._ensure_critical_deps = _ensure_critical_deps
-    except ImportError:
-        pass
-
-patch_numpy_version()
-
 # Custom CSS for styling
 st.markdown("""
 <style>
